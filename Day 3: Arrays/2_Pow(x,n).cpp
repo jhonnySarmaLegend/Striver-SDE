@@ -12,6 +12,7 @@ double myPow(double x, int n) {
 }
 
 //METHOD 2 (BINARY EXPONENTIAL)
+// T.C. = O(LogN) , S.C. = O(1)
 /*
   2^10 (x=2,n=10)
 

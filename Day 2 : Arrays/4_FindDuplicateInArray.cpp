@@ -45,6 +45,17 @@ int findDuplicate(vector < int > & nums) {
   return slow;
 }
 
+
+//USING SET
+ set<int> s;
+     for(auto it:nums){
+        if(s.find(it)!=s.end())return it;
+        else s.insert(it);
+     }
+     return -1;
+
+
+
 /* //This will work but fail for cases where input array like [3,3,3,3]
   class Solution {
 public:

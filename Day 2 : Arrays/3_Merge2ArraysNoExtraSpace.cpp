@@ -10,6 +10,8 @@ void merge(long long arr1[], long long arr2[], int n, int m) {
     int left = n - 1;
     int right = 0;
 
+   // Arrays already SORTED
+   
     //Swap the elements until arr1[left] is
     // smaller than arr2[right]:
     while (left >= 0 && right < m) {

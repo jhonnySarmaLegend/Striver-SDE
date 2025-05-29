@@ -2,6 +2,27 @@
    Question Link --> https://leetcode.com/problems/unique-paths/description/
 */
 
+/*OPTIMAL --> NcR*/
+int uniquePaths(int m, int n) {
+        int N = n + m - 2; // Total steps
+        int r = n - 1;     // The number of right movements (can use m - 1 as well)
+
+        // Ensure r is not larger than N-r, so we compute C(N, r) = C(N, N - r)
+        if (r > N - r) {
+            r = N - r;
+        }
+
+        long long res = 1; // Use long long to prevent overflow
+        
+        // Calculate C(N, r) = N! / (r! * (N - r)!)
+        for (int i = 0; i < r; i++) {
+            res = res * (N - i);
+            res = res / (i + 1);
+        }
+
+        return (int)res; // Convert to int before returning
+ 
+    }
 //BRUTE FORCE - RECURSION 
 // T.C. = Exponential
 

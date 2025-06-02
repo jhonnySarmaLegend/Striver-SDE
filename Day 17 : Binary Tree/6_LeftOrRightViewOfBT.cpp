@@ -15,7 +15,7 @@ The recursive nature of the getHeight function, which incurs space on the call s
 call until it reaches the leaf nodes or the height of the tree.
 */
 
-//RIGHT VIEW
+//RIGHT VIEW --> NRL (Reverse Preorder) first occurence from right side
    // Function to return the Right view of the binary tree
     vector<int> rightsideView(Node* root){
         // Vector to store the result
@@ -52,7 +52,7 @@ void recursionRight(Node* root, int level, vector<int> &res){
 }
 
 
-//LEFT VIEW
+//LEFT VIEW --> NLR ( Preorder) first occurence from right side
  // Function to return the Left view of the binary tree
     vector<int> leftsideView(Node* root){
         // Vector to store the result

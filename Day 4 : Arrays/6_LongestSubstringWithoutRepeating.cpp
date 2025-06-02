@@ -2,6 +2,12 @@
   Question Link --> https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
 */
 
+/*
+To imagine the Binary Tree from above, we visualise vertical lines passing through the tree. Each vertical 
+line represents a unique vertical position. Nodes to the right of the tree’s centre are assigned positive 
+vertical indexes. As we move to the right, the vertical index increases. Nodes to the left of the tree’s 
+centre are assigned negative vertical indexes. As we move to the left, the vertical index decreases
+*/
 
 // METHOD 1 - using hashmap
 class Solution {

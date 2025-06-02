@@ -1,5 +1,13 @@
 //Question Link --> https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1
 
+/*
+To imagine the Binary Tree from above, we visualise vertical lines passing through the tree. Each vertical 
+line represents a unique vertical position. Nodes to the right of the tree’s centre are assigned positive 
+vertical indexes. As we move to the right, the vertical index increases. Nodes to the left of the tree’s 
+centre are assigned negative vertical indexes. As we move to the left, the vertical index decreases
+*/
+
+
 vector<int> bottomView(Node* root){
         // Vector to store the result
         vector<int> ans;
@@ -22,7 +30,7 @@ vector<int> bottomView(Node* root){
         // position (0) into the queue
         q.push({root, 0});
         
-        // BFS traversal
+        // BFS traversal --> Level order traversal
         while(!q.empty()){
             // Retrieve the node and its vertical
             // position from the front of the queue

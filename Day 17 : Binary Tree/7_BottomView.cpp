@@ -7,6 +7,7 @@ vertical indexes. As we move to the right, the vertical index increases. Nodes t
 centre are assigned negative vertical indexes. As we move to the left, the vertical index decreases
 */
 
+//LAST NODE OF EVERY LINE - LEVEL ORDER TRAVERSAL
 
 vector<int> bottomView(Node* root){
         // Vector to store the result

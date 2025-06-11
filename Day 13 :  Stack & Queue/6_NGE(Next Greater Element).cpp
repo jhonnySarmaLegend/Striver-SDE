@@ -44,14 +44,14 @@ return nge;
 //Optimal Solution Using STACK - T.C.=O(N), S.C.=O(N)
 vector<int> nextLargerElement(vector<int> &arr) {
     int n = arr.size();
-    vector<int> res(n, -1);
+    vector<int> res(n, -1);//when stack is empty puts res[n-1] as -1
     stack<int> stk;
 
     // Traverse the array from right to left
     for (int i = n - 1; i >= 0; i--) {
 
         // Pop elements from the stack that are less than or equal to the current element
-        while (!stk.empty() && stk.top() <= arr[i]) {
+        while (!stk.empty() &&  arr[I] >= stk.top()) {
             stk.pop();
         }
 

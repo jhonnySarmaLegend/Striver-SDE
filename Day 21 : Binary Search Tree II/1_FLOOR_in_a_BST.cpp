@@ -1,4 +1,5 @@
-//floor(x) <= x
+//
+// floor(x) <= x --> greatest value < x
 
 
 

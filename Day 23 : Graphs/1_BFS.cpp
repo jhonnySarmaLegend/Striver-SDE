@@ -2,6 +2,8 @@
 
 //Adjacency List
 
+
+// T.C. = O(N) + O(2E) , S.C. = O(3N) [ vis,q,ans] ~ O(N)
 vector<int> bfs(vector<vector<int>> &adj) {
 int v = adj.size(); 
 vector<int> vis(v, 0);

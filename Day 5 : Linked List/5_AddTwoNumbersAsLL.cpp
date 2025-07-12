@@ -28,7 +28,7 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
             carry=sum/10;
             ListNode* newNode=new ListNode(sum%10);
             node->next=newNode;
-            node=newNode;
+            node=node->next;//or node=newNode;
 
         }
         return ans->next;

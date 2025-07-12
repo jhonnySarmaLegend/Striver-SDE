@@ -7,9 +7,9 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 
         ListNode* temp1=l1;  
         ListNode* temp2=l2;
-
-        ListNode* node=new ListNode(0);
-        ListNode* ans=node;
+                                         // good convention
+        ListNode* node=new ListNode(0);  // name node-->dummy
+        ListNode* ans=node; // ans --> temp
         int carry=0;
 
         while(temp1!=NULL || temp2!=NULL || carry!=0){

@@ -5,6 +5,30 @@
 // brute force
 // put both in set and make LL from set
 // T.C. =O(2(N+M)) , S.C.=O(N+M)
+ vector<int> ans;
+        ListNode* temp=l1;
+        while(temp){
+           ans.push_back(temp->val);temp=temp->next;
+        }
+        temp=l2;
+ while(temp){
+           ans.push_back(temp->val);temp=temp->next;
+        }
+
+
+        sort(ans.begin(),ans.end());
+
+        ListNode* head=new ListNode(-1);
+        ListNode* curr=head;
+
+        for(auto it:ans){
+              ListNode* node=new ListNode(it);
+              curr->next=node;
+              curr=curr->next;
+        }
+        return head->next;
+
+
 
 //Optimal --> One pass Both LL  --> T.C. = O(N+M) , S.C.=O(1)
  ListNode* mergeTwoLists(ListNode* head1, ListNode* head2) {

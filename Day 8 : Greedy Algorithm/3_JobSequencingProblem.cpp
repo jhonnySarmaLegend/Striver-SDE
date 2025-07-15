@@ -35,11 +35,11 @@ Traverse through the heap and store the total profit and the count of jobs.
 
     for (const auto &job : jobs) {
         
-        // if job can be scheduled within its deadline
+        // if job can be scheduled within its deadline --> different deadline
         if (job.first > pq.size())
             pq.push(job.second);
         
-        // Replace the job with the lowest profit
+        // Replace the job with the lowest profit --> same deadline
         else if (!pq.empty() && pq.top() < job.second) {
             pq.pop();
             pq.push(job.second);

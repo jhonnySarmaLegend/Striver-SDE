@@ -1,6 +1,9 @@
 // https://www.geeksforgeeks.org/dsa/meeting-rooms-find-minimum-meeting-rooms/#better-approach-using-sorting-and-two-pointers-onlogn-time-and-o1-space
 
 
+//simila to question 2 minimum platforms
+
+
 // Function to find the minimum number of rooms
 // required
 int minMeetingRooms(vector<int> &start, vector<int> &end) {

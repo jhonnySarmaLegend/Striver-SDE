@@ -14,6 +14,25 @@ int kthElement(vector<int> &a, vector<int> &b, int k) {
 }
 
 
+//Better - using Min Heap - Priority Queue
+ int kthElement(vector<int>& a, vector<int>& b, int k) {
+        // code here
+        priority_queue<int,vector<int>, greater<int>> pq;
+        
+        for(auto it:a)pq.push(it);
+        
+        for(auto it:b)pq.push(it);
+        
+        k--;
+        
+        while(k--){
+            pq.pop();
+        }
+        
+        return pq.top();
+    }
+
+
 //Merge two sorted array --> then find arr[k-1]--> T.C.= O(M+N) 
 
 

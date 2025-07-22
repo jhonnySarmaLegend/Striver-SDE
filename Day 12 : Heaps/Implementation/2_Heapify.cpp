@@ -26,6 +26,7 @@ void main(){
 
 int arr[6]={-1,2,9,7,4,1};
     int n=5;
+// For each leaf node in the heap
     for(int i=n/2;i>0;i--){
         heapify(arr,n,i);
     }

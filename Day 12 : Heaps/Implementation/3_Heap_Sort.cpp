@@ -25,3 +25,23 @@ void heapify(int arr[],int n,int i){
               heapify(arr,size,1);
           }
       }
+
+
+
+void main(){
+
+
+    int arr[6]={-1,2,9,7,4,1};
+    int n=5;
+// for each leaf node need to do heapify to make it the heap
+     for(int i=n/2;i>0;i--){
+         heapify(arr,n,i);
+     }
+   //  for(auto it:arr)cout<<it<<" ";cout<<"\n";
+
+    heapSort(arr,n);
+    
+   // for(auto it:arr)cout<<it<<" ";cout<<"\n";
+
+
+}

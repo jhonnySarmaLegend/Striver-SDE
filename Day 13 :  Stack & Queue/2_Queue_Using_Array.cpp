@@ -59,11 +59,11 @@ class Queue {
     currSize = 0;
   }
   void push(int newElement) {
-    if (currSize == maxSize) {
+    if (currSize == maxSize) { // overflow 
       cout << "Queue is full\nExiting..." << endl;
       exit(1);
     }
-    if (end == -1) {
+    if (end == -1) { // 0 element
       start = 0;
       end = 0;
     } else
@@ -73,12 +73,12 @@ class Queue {
     currSize++;
   }
   int pop() {
-    if (start == -1) {
+    if (start == -1) { // underflow
       cout << "Queue Empty\nExiting..." << endl;
       exit(1);
     }
     int popped = arr[start];
-    if (currSize == 1) {
+    if (currSize == 1) { // 1 element
       start = -1;
       end = -1;
     } else
@@ -87,7 +87,7 @@ class Queue {
     return popped;
   }
   int top() {
-    if (start == -1) {
+    if (start == -1) { // underflow
       cout << "Queue is Empty" << endl;
       exit(1);
     }

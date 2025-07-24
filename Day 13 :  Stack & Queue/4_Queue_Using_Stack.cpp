@@ -16,24 +16,20 @@ public:
     int pop() { //making pop costly
         // if output not empty toh pop krdo directly
         // aur agar khali h toh wha input stack ka saman bhar do phir pop kro 
-        int element = 0;
-        if(output.empty() == false)     
-        {
-
-        element = output.top(); 
-         output.pop();
-
-        }
-        else
+        
+        if(output.empty()) // output array is empty
         {
             while(input.empty() == false)
             {
             output.push(input.top());
             input.pop();
             }
-            element = output.top();
-            output.pop();
+            
         } 
+
+        //pop logic
+        int  element = output.top();
+        output.pop();
 
         return element;
     }
@@ -43,19 +39,18 @@ public:
         // if output not empty 
         // return output ka top
         // else khali h toh saara input daalne ka phir return maarne ka 
-        if(output.empty() == false)
-        {
-            return output.top();
-        }
-        else
+        
+        if(output.empty())
         {
             while(input.empty() == false)
             {
                 output.push(input.top());
                 input.pop();
             }
-            return output.top();
+            
         }
+
+        return output.top();
     }
     
     bool empty() {
@@ -70,6 +65,10 @@ public:
  * Your MyQueue object will be instantiated and called as such:
  * MyQueue* obj = new MyQueue();
  * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->peek();
+ * bool param_4 = obj->empty();
+ */
  * int param_2 = obj->pop();
  * int param_3 = obj->peek();
  * bool param_4 = obj->empty();

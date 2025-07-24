@@ -41,7 +41,7 @@ void SortedStack ::sort() {
 //USING RECURSION
 // Refer Love babbar video --> https://www.youtube.com/watch?v=BmZnJehDzyU&t=3175s - 50min around
 void sortedInsert(stack<int> &s, int x) {
-    if (s.empty() || x > s.top()) {
+    if (s.empty() ||  s.top()<x) {
         s.push(x);
         return;
     }

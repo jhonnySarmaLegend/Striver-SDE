@@ -9,7 +9,40 @@
 
 
 
+int longestValidParentheses(string s) {
+    // Stack to store indices; initialize with -1 to handle base for first valid substring
+    stack<int> st;
+    st.push(-1);
 
+    int maxLen = 0;  // Tracks the length of the longest valid parentheses substring
+
+    // Iterate over each character in the string by index
+    for (int i = 0; i < s.length(); i++) {
+        char ch = s[i];  // Current character
+
+        if (ch == '(') {
+            // For an opening parenthesis, push its index onto the stack
+            st.push(i);
+        } else {
+            // For a closing parenthesis, pop the top index
+            st.pop();
+
+            if (st.empty()) {
+                // If stack becomes empty, no matching opening bracket exists
+                // Push current index as a new base for future valid substrings
+                st.push(i);
+            } else {
+                // If stack is not empty, calculate the length of the current valid substring
+                // Distance from current index to index at new top of stack
+                int len = i - st.top();
+                // Update maxLen if this substring is longer
+                maxLen = max(len, maxLen);
+            }
+        }
+    }
+
+    return maxLen;  // Return the maximum length found
+}
 
 
 

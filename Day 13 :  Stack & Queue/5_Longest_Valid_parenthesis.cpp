@@ -4,7 +4,8 @@
 
 
 // USING STACK
-
+// https://www.youtube.com/watch?v=zhsjU1Bh9jQ
+// calculate & store index of invalid parenthesis in the stack
 
 
 

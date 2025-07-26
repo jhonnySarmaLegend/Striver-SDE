@@ -19,3 +19,47 @@ public:
         return ans;
     }
 };
+
+
+
+
+
+// Integer to Roman --> different map set
+class Solution {
+public:
+    string intToRoman(int num) {
+        // Mapping of integer values to Roman numerals
+        unordered_map<int, string> valueSymbols = {
+            {1000, "M"}, 
+            {900, "CM"}, 
+            {500, "D"}, 
+            {400, "CD"}, 
+            {100, "C"}, 
+            {90, "XC"}, 
+            {50, "L"}, 
+            {40, "XL"}, 
+            {10, "X"}, 
+            {9, "IX"}, 
+            {5, "V"}, 
+            {4, "IV"}, 
+            {1, "I"}
+        };
+
+        string result = "";
+
+        // Since maps are unordered, we need to iterate in descending order
+        // Instead, we manually create a sorted list of keys
+        vector<int> values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+
+        // Iterate through the sorted keys
+        for (int value : values) {
+            // Append the symbol while the value can be subtracted from num
+            while (num >= value) {
+                result += valueSymbols[value];
+                num -= value;
+            }
+        }
+
+        return result;
+    }
+};

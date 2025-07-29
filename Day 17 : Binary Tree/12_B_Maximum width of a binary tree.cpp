@@ -1,6 +1,34 @@
 // Question Link --> https://leetcode.com/problems/maximum-width-of-binary-tree/description/
 
+// Passing solution - do this only
 
+class Solution {
+public:
+    int widthOfBinaryTree(TreeNode* root) {
+         queue<pair<TreeNode*,int>> q;
+         q.push({root,0});// 0-based tree indexes
+         long ans=0;
+         while(!q.empty()){
+            int n=q.size();
+            long start=q.front().second;
+            long end=q.back().second;
+            ans=max(ans,end-start+1);
+            for(int i=0;i<n;i++){
+                pair<TreeNode*,int> p=q.front();
+                TreeNode* node=p.first;
+                long idx=p.second;
+                q.pop();
+                if(node->left)q.push({node->left,2*idx+1});//left child 2*ind+1
+                if(node->right)q.push({node->right,2*idx+2});//left child 2*ind+1
+            }
+         }
+         return ans;
+    }
+};
+
+
+
+// more optimized solution for indexing 
 class Solution {
 public:
     // Function widthOfBinaryTree to find the 
@@ -42,7 +70,7 @@ public:
             for (int i = 0; i < size; i++) {
                 // Calculate current position relative
                 // to the minimum position in the level
-                int cur_id = q.front().second - mmin;
+                int cur_id = q.front().second - mmin;//OVERFLOW --> for skew trees
                 // Get the current node
                 TreeNode* node = q.front().first;
                 // Pop the front node from the queue

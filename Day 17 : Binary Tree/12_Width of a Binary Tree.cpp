@@ -77,7 +77,11 @@ int main()
              /  \     \
             4    5     8
                      /   \
-                    6     7    */
+                    6     7   
+                    
+           Here max nodes at a level  or width is = 3  (4,5,8)         
+                    
+                    */
 
     // Function call
     cout << "Maximum width is " << maxWidth(root) << endl;

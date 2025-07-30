@@ -46,14 +46,14 @@ public:
 //T.C.=O(N), S.C.=O(N) Auxillary call stack space only
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         //base case
-        if (root == NULL || root == p || root == q) {
+        if (root == NULL || root == p || root == q) { // leaf node , target node p or target node q
             return root;
         }
         TreeNode* left = lowestCommonAncestor(root->left, p, q);
         TreeNode* right = lowestCommonAncestor(root->right, p, q);
 
         //result
-        if(left == NULL) {
+        if(left == NULL) { 
             return right;
         }
         else if(right == NULL) {

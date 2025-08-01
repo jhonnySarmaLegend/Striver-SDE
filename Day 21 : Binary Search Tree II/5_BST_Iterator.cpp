@@ -40,7 +40,7 @@ private:
 
 
 
-//Effectively will store inorder in stack 
+//2.Effectively will store inorder in stack 
 
 /**
  * Definition for a binary tree node.

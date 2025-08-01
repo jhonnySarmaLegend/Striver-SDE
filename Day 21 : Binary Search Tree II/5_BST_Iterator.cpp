@@ -1,5 +1,45 @@
 //Question Link --> https://leetcode.com/problems/binary-search-tree-iterator/description/
 
+
+// 1.USING PRIORITY QUEUE or min heap
+// using property --> inorder of bst is sorted
+class BSTIterator {
+public:
+    // Min-heap of all node values
+    priority_queue<int, vector<int>, greater<int>> minHeap;
+
+    // Constructor: traverse the tree and build the heap
+    BSTIterator(TreeNode* root) {
+        buildHeap(root);
+    }
+
+    // Returns the next smallest number
+    int next() {
+        int smallest = minHeap.top();
+        minHeap.pop();
+        return smallest;
+    }
+
+    // True if there is still an element in the heap
+    bool hasNext() const {
+        return !minHeap.empty();
+    }
+
+private:
+    // Inorder-traverse and push values into the min-heap
+    void buildHeap(TreeNode* node) {
+        if (!node) return;
+        buildHeap(node->left);
+        minHeap.push(node->val);
+        buildHeap(node->right);
+    }
+};
+
+
+
+
+
+
 //Effectively will store inorder in stack 
 
 /**

@@ -1,5 +1,8 @@
+// variation 2 --> using dp --> with obstacle--> https://leetcode.com/problems/unique-paths-ii/description/
+
+
 /*
-   Question Link --> https://leetcode.com/problems/unique-paths/description/
+   Question Link --> https://leetcode.com/problems/unique-paths/description/  --> No obstacle
 */
 
 /*OPTIMAL --> NcR*/
@@ -130,3 +133,9 @@ N!
 ​
 
 */
+
+
+
+
+
+

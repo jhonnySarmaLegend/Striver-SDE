@@ -1,6 +1,12 @@
 //  Link --> https://leetcode.com/problems/first-missing-positive/description/
 
 
+ set<int> s(nums.begin(),nums.end());
+    for(int i=1;i<=nums.size();i++){
+        if(s.find(i)==s.end())return i;
+    }
+    return nums.size()+1;
+
 
 // BRUTE FORCE
 // T.C.= O(N) , S.C.=O(2N)

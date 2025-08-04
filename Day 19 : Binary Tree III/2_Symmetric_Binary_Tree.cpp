@@ -6,6 +6,12 @@ Question Link --> https://leetcode.com/problems/symmetric-tree/description/
 
 
   bool check(TreeNode* r1, TreeNode* r2){
+         //if(r1==NULL && r2==NULL)return true;
+        //if(r1==NULL && r2!=NULL  || r2==NULL && r1!=NULL)return false;
+
+        //equivalent
+    
+    
         // Base case: If either r1 or r2 is NULL, return true only if both are NULL.
         // This handles the cases where one or both subtrees are empty.
         if(r1==NULL || r2==NULL) return r1==r2;

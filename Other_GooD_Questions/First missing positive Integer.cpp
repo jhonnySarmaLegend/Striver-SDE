@@ -34,3 +34,24 @@ public:
 
 // cyclic sort--> https://www.youtube.com/watch?v=YvksaZhYYAk
 
+
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& arr) {
+        int n = arr.size();
+    // Cyclic Sort: Place each positive integer in its correct position [for arr in range 1 to n]
+    for (int i = 0; i < n; i++) {
+        while (arr[i] > 0 && arr[i] <= n && arr[i] != arr[arr[i] - 1]) {
+            swap(arr[i], arr[arr[i] - 1]);
+        }
+    }
+    // Find the first missing positive integer
+    for (int i = 0; i < n; i++) {
+        if (arr[i] != i + 1) {
+            return i + 1;
+        }
+    }
+    // If all numbers from 1 to n are present, return n + 1
+    return n + 1;
+    }
+};

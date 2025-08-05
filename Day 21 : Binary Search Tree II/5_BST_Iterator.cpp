@@ -3,6 +3,13 @@
 
 // 1.USING PRIORITY QUEUE or min heap
 // using property --> inorder of bst is sorted
+/*
+In summary:
+
+Constructor: O(n log n) time, O(n) space
+next(): O(log n) time
+hasNext(): O(1) time
+*/
 class BSTIterator {
 public:
     // Min-heap of all node values
@@ -41,45 +48,37 @@ private:
 
 
 //2.Effectively will store inorder in stack 
+/*
+Constructor: O(h) time, O(h) space
+next(): amortized O(1) time (worst O(h))
+hasNext(): O(1) time
+*/
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class BSTIterator {
-public:
     stack<TreeNode*> st;
+
+    void pushAll(TreeNode* root)
+    {
+        while(root)
+        {
+            st.push(root);
+            root = root->left;
+        }
+    }
+public:
     BSTIterator(TreeNode* root) {
-        pushleft(root);
+        pushAll(root);
     }
     
     int next() {
-        TreeNode* temp=st.top();
+        TreeNode* node = st.top();
         st.pop();
-        if(temp->right!=NULL) pushleft(temp->right);
-        return temp->val;
+        pushAll(node->right);
+        return node->val;
     }
     
     bool hasNext() {
-        return (!st.empty());
-        
-    }
-
-    private:
-    void pushleft(TreeNode* root){
-
-        while(root!=NULL){
-        st.push(root);
-        root=root->left;
-        }
-
+        return !st.empty();
     }
 };
 
@@ -89,8 +88,6 @@ public:
  * int param_1 = obj->next();
  * bool param_2 = obj->hasNext();
  */
-
-
 
 
 

@@ -1,5 +1,6 @@
 // Link --> https://www.geeksforgeeks.org/problems/count-ways-to-reach-the-nth-stair-1587115620/1
-
+// when said ans can be large so convert it into mod of 10^9 --> 
+//static const long long MOD = 1000000000LL;  // = 10^9   or # define MOD=1000000000
 // Similar to Fibonacci 
 
 
@@ -8,7 +9,7 @@
         // your code here
         if(n<=1)return 1;
         
-        return countWays(n-1) + countWays(n-2);
+        return (countWays(n-1) + countWays(n-2))%MOD;
     }
 
 //D.P.

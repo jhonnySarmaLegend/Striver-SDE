@@ -8,6 +8,10 @@ The greedy approach works optimally for Indian currency denominations because of
 it does not work for arbitrary denominations. This question passes because it is specifically designed to work with the greedy algorithm.
 */
 
+
+// Can be solved using DYNAMIC PROGRAMMING --> But we will use GREEDY LOGIC
+
+
 // TC == SC == O(N)
 class Solution {
   public:

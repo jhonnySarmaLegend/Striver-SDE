@@ -60,7 +60,7 @@ Space Complexity: O(1)*/
       for (int i = index; i < nums.size(); i++) {
         swap(nums[index], nums[i]);
         recurPermute(index + 1, nums, ans);
-        swap(nums[index], nums[i]);
+        swap(nums[index], nums[i]);// reswap or Backtrack
       }
     }
   public:

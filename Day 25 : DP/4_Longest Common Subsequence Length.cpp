@@ -72,3 +72,40 @@ public:
         return dp[m][n];
     }
 };
+
+
+/*
+A subsequence of a string is any sequence you can obtain by deleting zero or more characters from the original string without reordering the remaining characters.
+
+– Formally, if you have a string
+    S = s₀ s₁ s₂ … sₙ₋₁
+then T = t₀ t₁ … tₖ₋₁ is a subsequence of S if there exists indices 0 ≤ i₀ < i₁ < … < iₖ₋₁ < n such that
+    tⱼ = s_{iⱼ} for all j = 0…k–1.
+
+
+//Greddy code to count common elements between 2 strings
+vector<int> freq(256, 0);
+    for (char c : a) 
+        freq[(unsigned char)c]++;
+    int common = 0;
+    for (char c : b) {
+        if (freq[(unsigned char)c] > 0) {
+            freq[(unsigned char)c]--;
+            common++;
+        }
+    }
+ return common;
+
+
+    Greedy will fail --> 
+text1 =
+"ezupkr"
+text2 =
+"ubmrapg"
+
+Use Testcase
+Output
+3
+Expected
+2
+*/

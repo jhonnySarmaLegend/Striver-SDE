@@ -33,10 +33,10 @@
     for (int i = 0; i < v; ++i) {
         // For each node 'i', iterate through its list of neighbors.
         // 'neighbor' is a node directly connected to 'i'.
-        for (int neighbor : adjList[i]) {
+        for (int j : adjList[i]) {
             // Set the corresponding entry in the adjacency matrix to 1,
             // indicating an edge from 'i' to 'neighbor'.
-            adjMatrix[i][neighbor] = 1;
+            adjMatrix[i][j] = 1;
         }
     }
 

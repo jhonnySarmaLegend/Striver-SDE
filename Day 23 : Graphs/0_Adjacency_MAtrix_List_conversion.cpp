@@ -13,7 +13,7 @@
             // If there's an edge from node 'i' to node 'j' (adjMatrix[i][j] == 1)
             if (adjMatrix[i][j] == 1) {
                 // Add 'j' to the list of neighbors for node 'i'.
-                adjList[i].push_back(j);
+                adjList[i].push_back(j);//i->j
             }
         }
     }

@@ -7,7 +7,7 @@
 
 /*OPTIMAL --> NcR*/
 int uniquePaths(int m, int n) {
-        int N = n + m - 2; // Total steps
+        int N = n + m - 2; // Total steps - n-1 + m-1
         int r = min(n-1,m-1);
    // int r = n - 1;     // The number of right movements (can use m - 1 as well)
 

@@ -6,7 +6,7 @@
 //T.C. = O(N) , S.C. = O(N)
 class Solution {
   public:
-    int maxLen(vector<int>& arr) {
+    int maxLength(vector<int>& arr) {
         // code here
         int n=arr.size();
         unordered_map<int,int> mpp;
@@ -19,9 +19,10 @@ class Solution {
             
             if(sum==0)maxi=i+1; // target value found
             
-           else if(mpp.find(sum)!=mpp.end())maxi=max(maxi,i-mpp[sum]); // target value already present
+            // rem find --> k=0 , rem=sum-k=sum-0=sum
+            if(mpp.find(sum)!=mpp.end())maxi=max(maxi,i-mpp[sum]); // target value already present
             
-            else mpp[sum]=i; // target value absent
+            if(mpp.find(sum)==mpp.end())mpp[sum]=i; // target value absent
         }
         return maxi;
     }

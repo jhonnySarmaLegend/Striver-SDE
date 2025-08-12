@@ -39,8 +39,8 @@ Traverse through the heap and store the total profit and the count of jobs.
         if (job.first > pq.size())
             pq.push(job.second);
         
-        // Replace the job with the lowest profit --> same deadline
-        else if (!pq.empty() && pq.top() < job.second) {
+        // maximize profit --> same deadline
+        else if (!pq.empty() && pq.top() < job.second) { // job.first <= pq.size() --> same deadline  + profit maximization
             pq.pop();
             pq.push(job.second);
         }

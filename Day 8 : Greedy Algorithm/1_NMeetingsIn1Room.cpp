@@ -15,8 +15,9 @@ int maxMeetings(vector<int>& start, vector<int>& end) {
         sort(meeting.begin(),meeting.end());  // nlogn
         
         for(int i=0;i<n;i++){
-            if(meeting[i].second>lastFinish){count++;
-            lastFinish=meeting[i].first;
+            if(meeting[i].second>lastFinish){ // curr start time > last finish time
+            count++;
+            lastFinish=meeting[i].first; // curr finish/end time
                 
             }
         }

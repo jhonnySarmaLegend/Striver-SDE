@@ -37,6 +37,7 @@ public:
 // T.C.=O(N) ,  S.C. = O(1) 
 int trap(vector<int>& height){
         int n=height.size();
+        if(n<3)return 0;  
         int ans=0;
         int left=0,right=n-1;
         int maxL=height[left],maxR=height[right];

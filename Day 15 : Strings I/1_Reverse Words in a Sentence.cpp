@@ -29,13 +29,13 @@ string reverseWords(string s) {
     // Step 3: Clean up extra spaces in-place.
     int read = 0, write = 0;
 
-    // Skip leading spaces.
-    while (read < n && s[read] == ' ')++read;
-
     while (read < n) {
+
+        // Skip leading spaces.
+        while (read < n && s[read] == ' ')++read;
+
         // Copy the word.
-        while (read < n && s[read] != ' ')
-            s[write++] = s[read++];
+        while (read < n && s[read] != ' ')s[write++] = s[read++];
 
         // Skip multiple spaces.
         while (read < n && s[read] == ' ')++read;

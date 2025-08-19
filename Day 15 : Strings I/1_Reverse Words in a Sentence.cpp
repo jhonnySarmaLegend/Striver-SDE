@@ -1,6 +1,33 @@
 // Leetcode --> https://leetcode.com/problems/reverse-words-in-a-string/description/
 
 
+//T.C.= O(N),S.C.=O(N)
+string reverseWords(string s) {
+    reverse(s.begin(), s.end());
+    string ans;
+    int n = s.length();
+    
+    for (int i = 0; i < n; ++i) {
+        // skip any spaces
+        if (s[i] == ' ') continue;
+        
+        // collect the next word in reversed s
+        string word;
+        while (i < n && s[i] != ' ') {
+            word += s[i++];
+        }
+        
+        // reverse it back
+        reverse(word.begin(), word.end());
+        
+        // append (with leading space if ans not empty) // space between two words 
+        if (!ans.empty())ans += ' ';
+        ans += word;
+    }
+    
+    return ans;
+}
+
 // Using stack --> O(N) , O(N)
 class Solution {
 public:

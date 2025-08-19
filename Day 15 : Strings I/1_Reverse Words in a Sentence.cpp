@@ -5,60 +5,47 @@
 string reverseWords(string s) {
     int n = s.size();
 
-    // Step 1: Reverse the entire string manually using two pointers.
-    for (int left = 0, right = n - 1; left < right; ++left, --right) {
-        swap(s[left], s[right]);
-    }
+    // Step 1: Reverse the entire string.
+    reverse(s.begin(), s.end());
 
-    // Step 2: Iterate through the string and reverse each word manually.
-    int start = 0, end = 0; // Two pointers to identify word boundaries.
+    // Step 2: Reverse words individually.
+    int start = 0, end = 0;
     while (end < n) {
-        // Skip leading spaces
-        while (start < n && s[start] == ' ') 
-            ++start;
+        // Skip leading spaces to find the start of a word.
+        while (start < n && s[start] == ' ')++start;
 
         end = start;
 
-        // Find the boundary of the word
-        while (end < n && s[end] != ' ') 
-            ++end;
+        // Find the boundary of the word.
+        while (end < n && s[end] != ' ')++end;
 
-        // Reverse the word using two pointers
-        int left = start, right = end - 1;
-        while (left < right) {
-            swap(s[left], s[right]);
-            ++left;
-            --right;
-        }
-        start = end; // Move to the next word
+        // Reverse the word.
+        reverse(s.begin() + start, s.begin() + end);
+
+        // Move to the next word.
+        start = end;
     }
 
-    // Step 3: Remove extra spaces (leading, trailing, and in-between words).
-    int write = 0, read = 0;
-    while (read < n) {
-        // Skip leading spaces
-        while (read < n && s[read] == ' ')
-            ++read;
+    // Step 3: Clean up extra spaces in-place.
+    int read = 0, write = 0;
 
-        // Copy the word
+    // Skip leading spaces.
+    while (read < n && s[read] == ' ')++read;
+
+    while (read < n) {
+        // Copy the word.
         while (read < n && s[read] != ' ')
             s[write++] = s[read++];
 
-        // Collapse spaces between words
-        while (read < n && s[read] == ' ')
-            ++read;
+        // Skip multiple spaces.
+        while (read < n && s[read] == ' ')++read;
 
-        // Add a single space if more characters exist
-        if (read < n) 
-            s[write++] = ' ';
+        // Add a single space if more content exists.
+        if (read < n)s[write++] = ' ';
     }
 
-    // Build a final string with valid content
-    string result;
-    for (int i = 0; i < write; ++i) {
-        result += s[i];
-    }
-    return result;
+    // Return the trimmed result.
+    return s.substr(0, write);
 }
 
 

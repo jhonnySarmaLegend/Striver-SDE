@@ -2,6 +2,57 @@
   Question Link --> https://leetcode.com/problems/reverse-nodes-in-k-group/description/
 */
 
+
+
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        if (!head) return NULL; // If the list is empty, return NULL.
+        
+        ListNode* temp = head, *start = head, *prevStart = NULL; // Initialize pointers for traversal.
+        int counter = 1; // Counter to track nodes in the current group.
+
+        while (temp) { // Traverse the list.
+            if (counter < k) { // If the current group size is less than k, continue counting.
+                counter++;
+                temp = temp->next; // Move to the next node.
+            }
+            else { // If the current group size equals k, reverse the group.
+                ListNode *curr = start->next, *prevCurr = start, *ptr; // Initialize pointers for reversing the group.
+
+                while (counter > 1) { // Reverse the group of size k.
+                    ptr = curr->next; // Store the next node of curr.
+                    curr->next = prevCurr; // Reverse the link by pointing curr->next to prevCurr.
+                    prevCurr = curr; // Move prevCurr to curr.
+                    curr = ptr; // Move curr to ptr (next node).
+                    counter--; // Decrement the counter.
+                }
+
+                start->next = curr; // Connect the reversed group to the rest of the list.
+
+                if (prevStart) prevStart->next = temp; // Connect the previous reversed group to the current reversed group.
+                if (!prevStart) { // If prevStart is NULL (first group), update the head of the list.
+                    head = prevCurr;
+                }
+
+                prevStart = start; // Update prevStart to the end of the current reversed group.
+                temp = curr; // Move temp to the next group's starting node.
+                start = temp; // Update start to the next group's starting node.
+            }
+        }
+
+        return head; // Return the modified list head.
+    }
+};
+
+
+
+
+
+
+//ANOTHER WAY
+
+
 //HARD QUESTION
 /*
   Time Complexity: O(2N) The time complexity consists of actions of reversing segments of K and finding the Kth node which operates in linear time. Thus, O(N) + O(N) = O(2N), which simplifies to O(N).

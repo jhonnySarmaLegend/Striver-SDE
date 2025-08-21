@@ -44,6 +44,7 @@ public:
         ListNode* slow=head;
         ListNode* fast=head;
 
+       //to stop at 1 node before middle
         while(fast->next!=NULL && fast->next->next!=NULL){
             slow=slow->next;
             fast=fast->next->next;

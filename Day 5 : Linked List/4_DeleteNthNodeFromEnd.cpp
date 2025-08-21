@@ -10,13 +10,13 @@ ListNode* removeNthFromEnd(ListNode* head, int n) {
 
         //so difference between fast and slow is k or n units
         if(fast==NULL)return head->next;
-
-       //when fast is at last node  , slow will be at n-1th node from last
+ 
         while(fast->next!=NULL){
             fast=fast->next;
             slow=slow->next;
         }
-  
+
+        //when fast is at last node  , slow will be at n-1th node from last , hence nth node from last can be deleted.
         slow->next=slow->next->next;
   
         return head;

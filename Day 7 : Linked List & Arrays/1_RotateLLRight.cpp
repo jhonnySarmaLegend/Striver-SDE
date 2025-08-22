@@ -19,8 +19,9 @@
         while(temp->next!=NULL){
              temp=temp->next;
         }
-        temp->next=head;
+        temp->next=head;//last node to 1st
         k=k-1;//since head at node 1
+     
         for(int i=1;i<count-k;i++)temp=temp->next;
         head=temp->next;
         temp->next=NULL;

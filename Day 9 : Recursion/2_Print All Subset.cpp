@@ -78,3 +78,41 @@ void findSubsets(int ind, vector < int > & nums, vector < int > & ds, vector < v
          findSubsets(0, nums, ds, ans);
          return ans;
       }
+
+
+
+
+
+
+
+
+
+// USING BIT MANIPULATION FOR POWER SET
+class Solution {
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+         set<vector<int>> uniqueSubsets; // Set to store unique subsets
+
+        // Step 1: Sort the array to handle duplicates
+        sort(nums.begin(), nums.end());
+        
+        int n = nums.size();
+        // Step 2: Generate all subsets using bit manipulation
+        for (int i = 0; i < (1 << n); ++i) { // (1 << n) is 2^n
+            vector<int> currentSubset;
+            for (int j = 0; j < n; ++j) {
+                // Check if the j-th bit is set
+                if (i & (1 << j)) {
+                    currentSubset.push_back(nums[j]);
+                }
+            }
+            // Insert current subset into the set to avoid duplicates
+            uniqueSubsets.insert(currentSubset);
+        }
+
+        // Convert the set to a vector for the final result
+        return vector<vector<int>>(uniqueSubsets.begin(), uniqueSubsets.end());
+   
+    }
+};
+

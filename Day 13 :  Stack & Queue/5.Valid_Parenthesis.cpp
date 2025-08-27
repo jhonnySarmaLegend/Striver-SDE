@@ -1,6 +1,9 @@
 
 //Question Link --> https://leetcode.com/problems/valid-parentheses/
 
+
+// PUSH Characters/ BRACKETS
+
 class Solution {
 public:
     bool isValid(string s) {

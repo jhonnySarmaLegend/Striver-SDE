@@ -10,7 +10,7 @@
 
 
 int longestValidParentheses(string s) {
-    // Stack to store indices; initialize with -1 to handle base for first valid substring
+  // A stack st is initialized with -1 to handle edge cases (e.g., when the substring starts from the beginning).
     stack<int> st;
     st.push(-1);
 

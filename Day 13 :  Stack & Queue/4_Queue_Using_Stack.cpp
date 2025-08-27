@@ -1,5 +1,108 @@
 //Question Link --> https://leetcode.com/problems/implement-queue-using-stacks/description/
 
+//USING 1 Stack + 1 temp stack 
+#include <stack>
+using namespace std;
+
+class MyQueue {
+private:
+    stack<int> st;
+
+public:
+    MyQueue() {}
+
+    // Expensive push operation: O(n)
+    void push(int x) {
+        if (st.empty()) {
+            st.push(x); // If the stack is empty, push directly
+        } else {
+                        stack<int> temp;
+            // Move all elements from the main stack to the auxiliary stack
+            while (!st.empty()) {
+                temp.push(st.top());
+                st.pop();
+            }
+            // Push the new element to the main stack (now at the bottom)
+            st.push(x);
+            // Move all elements back from the auxiliary stack to the main stack
+            while (!temp.empty()) {
+                st.push(temp.top());
+                temp.pop();
+            }
+
+        }
+    }
+
+    // O(1) pop operation
+    int pop() {
+        if (st.empty()) return -1;
+        int x = st.top();
+        st.pop();
+        return x;
+    }
+
+    // O(1) peek operation
+    int peek() {
+        if (st.empty()) return -1;
+        return st.top();
+    }
+
+    // O(1) empty operation
+    bool empty() {
+        return st.empty();
+    }
+};
+
+
+// USING 1 Stack + Auxillary Recursive SPACE
+#include <stack>
+using namespace std;
+
+class MyQueue {
+private:
+    stack<int> st;
+
+public:
+    MyQueue() {}
+
+    // Expensive push operation: O(n)
+    void push(int x) {
+        if (st.empty()) {
+            st.push(x); // If the stack is empty, push directly
+        } else {
+            // Pop the top element, push the new element to the bottom, and restore the stack
+            int top = st.top();
+            st.pop();
+            push(x); // Recursively push to the bottom
+            st.push(top); // Restore the elements as we unwind
+        }
+    }
+
+    // O(1) pop operation
+    int pop() {
+        if (st.empty()) return -1;
+        int x = st.top();
+        st.pop();
+        return x;
+    }
+
+    // O(1) peek operation
+    int peek() {
+        if (st.empty()) return -1;
+        return st.top();
+    }
+
+    // O(1) empty operation
+    bool empty() {
+        return st.empty();
+    }
+};
+
+
+
+
+
+//USING TWO STACK
 class MyQueue {
 public:
     

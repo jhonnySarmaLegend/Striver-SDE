@@ -51,7 +51,7 @@ vector<int> nextLargerElement(vector<int> &arr) {
     for (int i = n - 1; i >= 0; i--) {
 
         // Pop elements from the stack that are less than or equal to the current element
-        while (!stk.empty() &&  arr[I] >= stk.top()) {
+        while (!stk.empty() &&  arr[i] >= stk.top()) {
             stk.pop();
         }
 

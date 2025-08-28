@@ -1,4 +1,7 @@
 //Qustion Link --> https://leetcode.com/problems/lru-cache/description/
+
+// delete node & insert node --> Main functionality
+
 /*
 class LRUCache {
 public:

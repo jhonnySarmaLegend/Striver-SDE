@@ -34,7 +34,35 @@ public:
     }
 };
 
+/*
+When you’ve found  
+- `pse[i]` = index of the first bar < `heights[i]` to the **left** (or –1 if none)  
+- `nse[i]` = index of the first bar < `heights[i]` to the **right** (or n if none)  
 
+then **all** bars between `(pse[i] + 1)` and `(nse[i] – 1)` (inclusive) have height ≥ `heights[i]`.  
+
+To count how many bars that is:
+
+1. Leftmost usable index = `pse[i] + 1`  
+2. Rightmost usable index = `nse[i] – 1`  
+
+Number of elements in an inclusive range `[L…R]` is `R – L + 1`. Plug in:
+
+```
+R – L + 1
+= (nse[i] – 1) – (pse[i] + 1) + 1
+= nse[i] – 1 – pse[i] – 1 + 1
+= nse[i] – pse[i] – 1
+```
+
+So the **“– 1”** comes from:
+- subtracting off the two boundary indices (`pse[i]` and `nse[i]`)  
+- then adding back 1 because we’re counting inclusively  
+
+In simpler terms, you want the distance **between** the next-smaller and previous-smaller bars, **excluding**
+those bars themselves—that distance is `nse[i] – pse[i] – 1`.
+
+*/
 
 //OPTIMAL APPROACH 2 --> STRIVER
 int largestRectangleArea(vector < int > & histo) { // Function definition: Takes a reference to a vector of integers (histo), which represents the heights of the histogram bars. It returns an integer, which will be the maximum area found.

@@ -2,6 +2,26 @@
     Question Link --> https://leetcode.com/problems/find-the-duplicate-number/description/
 */
 
+
+//Method 3 
+//OPTIMAL -->  tortoise method
+int findDuplicate(vector < int > & nums) {
+  int slow = nums[0];
+  int fast = nums[0];
+  do {
+    slow = nums[slow];
+    fast = nums[nums[fast]];
+  } while (slow != fast);
+  fast = nums[0];
+  while (slow != fast) {
+    slow = nums[slow];
+    fast = nums[fast];
+  }
+  return slow;
+}
+
+
+
 // Easy Sorting --> T.C. O(NLOGN) , S.C. = O(1)
 class Solution {
 public:
@@ -29,21 +49,7 @@ public:
     }
 };
 
-//Method 3 
-int findDuplicate(vector < int > & nums) {
-  int slow = nums[0];
-  int fast = nums[0];
-  do {
-    slow = nums[slow];
-    fast = nums[nums[fast]];
-  } while (slow != fast);
-  fast = nums[0];
-  while (slow != fast) {
-    slow = nums[slow];
-    fast = nums[fast];
-  }
-  return slow;
-}
+
 
 
 //USING SET

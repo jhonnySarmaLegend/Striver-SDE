@@ -3,6 +3,44 @@
 // Inorder_Predecessor of 5 is 4
 // Inorder_Sucessor of 5 is 6
 
+
+// Desired Code
+class Solution {
+public:
+    void findSmall(Node* root, int key, Node*& pre) {
+        if (root == nullptr) return;
+        if (root->data < key) {
+            pre = root;
+            findSmall(root->right, key, pre);
+        } else {
+            findSmall(root->left, key, pre);
+        }
+    }
+
+    void findLarge(Node* root, int key, Node*& suc) {
+        if (root == nullptr) return;
+        if (root->data > key) {
+            suc = root;
+            findLarge(root->left, key, suc);
+        } else {
+            findLarge(root->right, key, suc);
+        }
+    }
+
+    vector<Node*> findPreSuc(Node* root, int key) {
+        Node* pre = nullptr;
+        Node* suc = nullptr;
+        findSmall(root, key, pre);
+        findLarge(root, key, suc);
+        return {pre, suc};
+    }
+};
+
+
+
+
+
+
 //Brute force --> store inorder of BST in array and return successor(1 value >key>) or predecessor(last value <key>) according to the question
 // T.C. = O(2N) inorder+loop , S.C. = O(N) 
 /* BST Node
@@ -67,7 +105,7 @@ class Solution {
 };
 
 
-//OPTIMIZED --> T.C.=O(H) , S.C.=O(1)
+//OPTIMIZED --> T.C.=O(H) , S.C.=O(1) --> With comments
 // successor > key so on right subtree   && predecessor < key so on left subtree
 /*
 Follow the steps below to solve the problem:

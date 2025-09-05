@@ -1,5 +1,24 @@
 // Question --> https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
 //T.C. = O(N0, S.C.=O(1)
+
+
+ TreeNode* curr = root;
+    while (curr) {
+        if (curr->left) {
+            TreeNode* pre = curr->left;
+            while (pre->right) {
+                pre = pre->right;
+            }
+            pre->right = curr->right;
+            curr->right = curr->left;
+            curr->left = NULL;
+        }
+        curr = curr->right;
+
+
+
+//COMMENTED CODE
+
 //INplace , no new nodes should be created
    void flatten(TreeNode* root) {
         // Initialize a pointer'curr' to the root of the tree

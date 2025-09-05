@@ -6,19 +6,18 @@ class Solution {
 public:
     bool findpath(TreeNode*root,TreeNode*target,vector<TreeNode*>&path)
     {
-        if(root==NULL)
-            return false;
-        if(root==target)
-        {
-            path.push_back(root);
-            return true;
-        }
-        if(findpath(root->left,target,path) or findpath(root->right,target,path))
-        {
-            path.push_back(root);
-            return true;
-        }
+        if (root == NULL)
         return false;
+    
+        // If we’re at the target, or we find it in either subtree:
+       if (root == target|| findpath(root->left,  target, path)|| findpath(root->right, target, path))
+      {
+        // Record this node on the path, and bubble up “found”
+        path.push_back(root);
+        return true;
+       }
+    // Not found here or in subtrees
+    return false;
     }
         
         

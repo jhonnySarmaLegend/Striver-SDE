@@ -4,7 +4,23 @@ A binary tree is symmetric if it is a mirror image of itself around its center.
 Question Link --> https://leetcode.com/problems/symmetric-tree/description/
 */
 
+//Soln
+    bool check(TreeNode* r1,TreeNode* r2){
+        if(r1==NULL && r2==NULL)return true; //both null
+        if(r1==NULL   || r2==NULL)return false;// 1 null  ,//equivalent r1==NULL && r2!=NULL  || r2==NULL && r1!=NULL
 
+        if(r1->val != r2->val)return false;
+
+        return check(r1->left,r2->right) && check(r1->right,r2->left);
+    }
+
+    bool isSymmetric(TreeNode* root) {
+        if(root==NULL)return true;
+        return check(root->left,root->right);
+    }
+
+
+// COMMENTED CODE
   bool check(TreeNode* r1, TreeNode* r2){
          //if(r1==NULL && r2==NULL)return true;
         //if(r1==NULL && r2!=NULL  || r2==NULL && r1!=NULL)return false;

@@ -15,3 +15,25 @@
        return root->val+max(left,right);
    }    
       
+
+
+
+// VARIATION 2 - MAX Path SUm from ROOT
+void dfs(TreeNode* root, int curSum,int &maxSum){
+  if(root==NULL)return;
+
+  curSum+=root->val;
+
+  maxSum=max(maxSum,curSum);
+
+  dfs(root->left,curSum,maxSum);
+  dfs(root->right,curSum,maxSum);
+}
+
+int rootPathMaxSum(TreeNode* root) {
+    int maxi=INT_MIN;
+   if(root==NULL)return maxi;
+
+   dfs(root,0,maxi);
+   return maxi;
+}

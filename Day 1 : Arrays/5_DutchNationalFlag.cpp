@@ -7,7 +7,7 @@
 class Solution {
 public:
     void sortColors(vector<int>& arr) {
-        int left=0,mid;
+        int left=0,mid=0;
         int right=arr.size()-1;
 
         while(mid<=right){

@@ -18,12 +18,14 @@ public:
         int slow = n;          // Tortoise
         int fast = getNext(n); // Hare
         // Detect cycle or convergence to 1
-        while (fast != 1 && slow != fast) {
+        while (slow != fast) {
             slow = getNext(slow);        // Move tortoise one step
             fast = getNext(getNext(fast)); // Move hare two steps
         }
-        // If fast converges to 1, it's a happy number
-        return fast == 1;
+
+        // Not happy number --> Cycle Detected: 16 → 37 → 58 → 89 → 145 → 42 → 20 → 4 → 16
+        // If fast converges to 1, it's a happy number , if 
+        return fast == 1; // 19 → 82 → 68 → 100 → 1.
     }
 };
 

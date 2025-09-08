@@ -8,9 +8,12 @@
 class Solution {
 public:
     int findDuplicate(const vector<int>& nums) {
+        int slow = nums[0];
+        int fast = nums[0];
         
-        int slow = nums[nums[0]]; // 1st position 
-        int fast = nums[nums[nums[0]]];//2nd position
+        // Phase 1: find intersection without do-while
+        slow = nums[slow]; //--> move 1 step 
+        fast = nums[nums[fast]];//--> move 1 step 
 
         while (slow != fast) {
             slow = nums[slow];

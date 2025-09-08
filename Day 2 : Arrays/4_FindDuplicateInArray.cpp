@@ -5,21 +5,28 @@
 
 //Method 3 
 //OPTIMAL -->  tortoise method
-int findDuplicate(vector < int > & nums) {
-  int slow = nums[0];
-  int fast = nums[0];
-  do {
-    slow = nums[slow];
-    fast = nums[nums[fast]];
-  } while (slow != fast);
-  fast = nums[0];
-  while (slow != fast) {
-    slow = nums[slow];
-    fast = nums[fast];
-  }
-  return slow;
-}
+class Solution {
+public:
+    int findDuplicate(const vector<int>& nums) {
+        
+        int slow = nums[nums[0]]; // 1st position 
+        int fast = nums[nums[nums[0]]];//2nd position
 
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }
+        
+        // Phase 2: find cycle entrance
+        fast = nums[0];
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        
+        return slow;
+    }
+};
 
 
 // Easy Sorting --> T.C. O(NLOGN) , S.C. = O(1)

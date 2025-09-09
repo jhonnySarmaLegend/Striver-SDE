@@ -3,7 +3,81 @@
 */
 
 
+//Using DEQUEUE
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        if(!head || k == 1) return head;
+        deque<ListNode*> dq;
+        ListNode * newHead = new ListNode(0);
+        ListNode * cur = newHead;
+        while(head){
+            dq.push_back(head);
+            head = head -> next;
+            if(dq.size() == k){
+                while(!dq.empty()){
+                    cur->next = dq.back();
+                    dq.pop_back();
+                    cur = cur->next;
+                }
+                cur -> next = head;
+            }
+        }
+        while(!dq.empty()){
+            cur -> next = dq.front();
+            dq.pop_front();
+            cur = cur -> next;
+        }
+        ListNode * rst = newHead -> next;
+        delete newHead;
+        return rst;
+    }
+};
 
+/*
+1. Intuition
+We want to process the list in “chunks” of k nodes.
+For each full chunk, we reverse the node order.
+Any leftover chunk with size < k remains in original order.
+A deque (double-ended queue) lets us collect k nodes, then pop from the back to rebuild them in reverse
+
+
+2. Approach
+Edge Cases
+
+If head == nullptr or k == 1, nothing changes. Return head.
+Setup
+
+Create a dummy newHead node to simplify list-building.
+cur points to the tail of our rebuilt list (starts at dummy).
+A deque<ListNode*> dq collects up to k pointers.
+Traverse & Collect
+
+While head is not null:
+a. dq.push_back(head) and advance head = head->next.
+b. If dq.size() == k, we have a full group:
+Pop from back of dq, attach to cur->next, advance cur.
+Repeat until dq is empty.
+Link cur->next = head (the next unprocessed node).
+Handle Remainder
+
+After the main loop, any nodes left in dq (< k) must remain in order:
+Pop from front, attach to cur->next, advance cur.
+Cleanup & Return
+
+rst = newHead->next is the real head.
+Delete dummy and return rst.
+
+
+
+
+*/
+
+
+
+
+
+//Alternate  without extra space
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {

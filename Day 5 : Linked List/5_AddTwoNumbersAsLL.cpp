@@ -4,12 +4,11 @@
 
 // T.C. = O(max(m,n)) , S.C. = O(max(m,n))
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-
         ListNode* temp1=l1;  
         ListNode* temp2=l2;
-                                         // good convention
-        ListNode* node=new ListNode(0);  // name node-->dummy
-        ListNode* ans=node; // ans --> temp
+
+        ListNode* temp=new ListNode(0);
+        ListNode* dummy=node;
         int carry=0;
 
         while(temp1!=NULL || temp2!=NULL || carry!=0){
@@ -27,10 +26,9 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
             
             carry=sum/10;
             ListNode* newNode=new ListNode(sum%10);
-            node->next=newNode;
-            node=node->next;//or node=newNode;
+            temp->next=newNode;
+            temp=newNode;
 
         }
-        return ans->next;
-
+        return dummy->next;
     }

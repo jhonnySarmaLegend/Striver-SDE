@@ -5,11 +5,12 @@
 
 //Using DEQUEUE
 ListNode* reverseKGroup(ListNode* head, int k) {
-    if (!head || k == 1) return head;
+    if (!head || k == 1)
+        return head;                // Nothing to do
 
     deque<ListNode*> dq;
-    ListNode* newHead = new ListNode(0);   // Dummy node
-    ListNode* cur = newHead;
+    ListNode* dummy = new ListNode(0);  // Dummy head for result
+    ListNode* temp  = dummy;            // Tail pointer of result
 
     // 1) Traverse the list, buffering nodes in dq
     while (head) {
@@ -19,25 +20,23 @@ ListNode* reverseKGroup(ListNode* head, int k) {
         // 2) Once we have k nodes, pop them in reverse
         if (dq.size() == k) {
             while (!dq.empty()) {
-                cur->next = dq.back();  // Take from back to reverse
+                temp->next = dq.back();  // Link last buffered node
                 dq.pop_back();
-                cur = cur->next;
+                temp = temp->next;       // Advance tail
             }
-            // Link to the next unprocessed node
-            cur->next = head;
+            // Connect to the next unprocessed node
+            temp->next = head;
         }
     }
 
-    // 3) Any nodes left (<k) are appended in original order
+    // 3) Append any remaining nodes (<k) in original order
     while (!dq.empty()) {
-        cur->next = dq.front();
+        temp->next = dq.front();
         dq.pop_front();
-        cur = cur->next;
+        temp = temp->next;
     }
 
-    ListNode* result = newHead->next;
-    delete newHead;
-    return result;
+    return dummy->next;  // Head of new list
 }
 /*
 1. Intuition

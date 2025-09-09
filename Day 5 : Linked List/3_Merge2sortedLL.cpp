@@ -15,16 +15,16 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        //Edge cases
-		if(list1==NULL && list2==NULL)return NULL;
+        if(list1==NULL && list2==NULL)return NULL;
         if(list1==NULL && list2!=NULL)return list2;
         if(list1!=NULL && list2==NULL)return list1;
 
-        ListNode* temp=new ListNode(-1);
-        ListNode *dummy=temp;
+        ListNode* dummy=new ListNode(-1);
+        ListNode *temp=dummy;
 
         ListNode *temp1=list1;
         ListNode *temp2=list2;
@@ -40,20 +40,18 @@ public:
              temp=temp->next;
         }
 
-        if(temp1!=NULL){
+          if(temp1!=NULL){
             temp->next=temp1;
             temp1=temp1->next;
-        }
-        
-        if(temp2!=NULL){
+           }
+           if(temp2!=NULL){
             temp->next=temp2;
             temp2=temp2->next;
-        }
+           }
 
-        return dummy->next;
+           return dummy->next;
     }
 };
-
 
 
 

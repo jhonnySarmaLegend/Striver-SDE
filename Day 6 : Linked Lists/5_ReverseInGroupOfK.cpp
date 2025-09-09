@@ -4,36 +4,41 @@
 
 
 //Using DEQUEUE
-class Solution {
-public:
-    ListNode* reverseKGroup(ListNode* head, int k) {
-        if(!head || k == 1) return head;
-        deque<ListNode*> dq;
-        ListNode * newHead = new ListNode(0);
-        ListNode * cur = newHead;
-        while(head){
-            dq.push_back(head);
-            head = head -> next;
-            if(dq.size() == k){
-                while(!dq.empty()){
-                    cur->next = dq.back();
-                    dq.pop_back();
-                    cur = cur->next;
-                }
-                cur -> next = head;
-            }
-        }
-        while(!dq.empty()){
-            cur -> next = dq.front();
-            dq.pop_front();
-            cur = cur -> next;
-        }
-        ListNode * rst = newHead -> next;
-        delete newHead;
-        return rst;
-    }
-};
+ListNode* reverseKGroup(ListNode* head, int k) {
+    if (!head || k == 1) return head;
 
+    deque<ListNode*> dq;
+    ListNode* newHead = new ListNode(0);   // Dummy node
+    ListNode* cur = newHead;
+
+    // 1) Traverse the list, buffering nodes in dq
+    while (head) {
+        dq.push_back(head);
+        head = head->next;
+
+        // 2) Once we have k nodes, pop them in reverse
+        if (dq.size() == k) {
+            while (!dq.empty()) {
+                cur->next = dq.back();  // Take from back to reverse
+                dq.pop_back();
+                cur = cur->next;
+            }
+            // Link to the next unprocessed node
+            cur->next = head;
+        }
+    }
+
+    // 3) Any nodes left (<k) are appended in original order
+    while (!dq.empty()) {
+        cur->next = dq.front();
+        dq.pop_front();
+        cur = cur->next;
+    }
+
+    ListNode* result = newHead->next;
+    delete newHead;
+    return result;
+}
 /*
 1. Intuition
 We want to process the list in “chunks” of k nodes.

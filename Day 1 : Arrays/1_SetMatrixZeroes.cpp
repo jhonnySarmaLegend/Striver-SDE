@@ -68,7 +68,7 @@ vector<vector<int>> zeroMatrix(vector<vector<int>> &matrix, int n, int m) {
         }
     }
 
-    //step 3: Finally mark the 1st col & then 1st row:
+    //step 3: Finally mark the 1st row  & then 1st col:
     if (matrix[0][0] == 0) {
         for (int j = 0; j < m; j++) {
             matrix[0][j] = 0;

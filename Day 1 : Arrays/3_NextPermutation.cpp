@@ -2,6 +2,24 @@
    Question Link --> https://leetcode.com/problems/next-permutation/description/
 */
 
+
+//OPTIMIZED
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        int bp=-1;
+
+        for(int i=nums.size()-1;i>0;i--)if(nums[i]>nums[i-1]){bp=i-1;break;} // 433 5 6321 here 3 index in bp since 5<6
+        
+        if(bp==-1){reverse(nums.begin(),nums.end());return;}//cases like 54321
+
+        for(int i=nums.size()-1;i>bp;i--)if(nums[i]>nums[bp]){swap(nums[i],nums[bp]);break;} // 433 6 5 321
+
+        sort(nums.begin()+bp+1,nums.end()); // 4336 1235
+    }
+};
+
+
 // METHOD 1  --> Using inbuilt function
  void nextPermutation(vector<int>& nums) {
     next_permutation(nums.begin(), nums.end());

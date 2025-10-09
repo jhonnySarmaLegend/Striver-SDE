@@ -2,6 +2,36 @@
    Question Link --> https://leetcode.com/problems/merge-sorted-array/description/
 */
 
+//Leetcode
+// Variation -->  nums1 size equals n+m  , and answer will be stored in n+m
+
+class Solution {
+public:
+   /*
+   Input: nums1 = [1,2,3,0,0,0], n = 3, nums2 = [2,5,6], m = 3
+   Output: [1,2,2,3,5,6]
+   Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+   The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+    */
+    void merge(vector<int>& nums1, int n, vector<int>& nums2, int m) {
+        int i=n-1,j=0;
+        while(i>=0 && j<m){
+            if(nums1[i]>nums2[j])swap(nums1[i--],nums2[j++]);
+            else break;
+        }
+        sort(nums1.begin(),nums1.begin()+n);
+        sort(nums2.begin(),nums2.end());
+        
+         for(int i=n; i<m+n; i++){
+            nums1[i] = nums2[i-n];
+        }
+    }
+};
+
+
+
+
+
 // Method 1
 //T.C. = O(N+M) , S.C. = O(1)
 void merge(long long arr1[], long long arr2[], int n, int m) {

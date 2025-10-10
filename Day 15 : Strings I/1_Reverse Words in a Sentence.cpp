@@ -1,7 +1,53 @@
 // Leetcode --> https://leetcode.com/problems/reverse-words-in-a-string/description/
 
 
-// OPTIMAL --> T.C.=O(N), S.C.=O(1)
+
+//MOST OPTIMAL
+
+
+
+
+
+
+
+
+
+// USING STACK
+class Solution {
+public:
+    string reverseWords(string s) {
+        stack<string> st;
+        string res="";
+        for(auto it:s){
+            if(it!=' ')res+=it;
+            else{
+                if(res.size()>0)st.push(res);
+                res="";
+            }
+        }
+        if(res.size()>0)st.push(res);//last word there after space
+
+        string ans="";
+        while(!st.empty()){
+            ans+=st.top();st.pop();
+            if(!st.empty())ans+=' ';
+        }
+        return ans;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+// OPTIMAL --> T.C.=O(N), S.C.=O(1) --> COMMENTED
 string reverseWords(string s) {
     int n = s.size();
 
@@ -53,7 +99,7 @@ string reverseWords(string s) {
 
 
 
-//T.C.= O(N),S.C.=O(N)
+//T.C.= O(N),S.C.=O(N) 
 string reverseWords(string s) {
     reverse(s.begin(), s.end());
     string ans;
@@ -80,7 +126,7 @@ string reverseWords(string s) {
     return ans;
 }
 
-// Using stack --> O(N) , O(N)
+// Using stack --> O(N) , O(N) --> COMMENTED
 class Solution {
 public:
     string reverseWords(string s) {

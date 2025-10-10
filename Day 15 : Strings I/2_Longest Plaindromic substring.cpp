@@ -37,47 +37,35 @@ public:
 
 //OPTIMIZED
 class Solution {
-public:
-    // Expands around the “center” defined by indices i and j,
-    // returning the length of the longest palindromic substring found.
-    // When i == j → odd-length center (e.g. “racecar” center at ‘e’)
-    // When j == i + 1 → even-length center (e.g. “abba” center between the two b’s)
-    int ExpandFromCenter(const string& s, int i, int j) {
-        // Expand outward as long as we haven’t run off the ends
-        // and the characters still match.
-        while (i >= 0 && j < (int)s.size() && s[i] == s[j]) {
-            i--;
-            j++;
+private:
+    // Helper function to expand around center
+    void expand(int l, int r, string &s, int &maxLen, string &res) {
+        int n = s.size();
+        while (l >= 0 && r < n && s[l] == s[r]) {
+            int len = r - l + 1;
+            if (len > maxLen) {
+                maxLen = len;
+                res = s.substr(l, len);
+            }
+            l--;
+            r++;
         }
-        // After the loop, i and j have stepped one too far:
-        // length = (j - 1) − (i + 1) + 1 = j − i − 1
-        return j - i - 1;
     }
 
+public:
     string longestPalindrome(string s) {
-        if (s.empty()) return "";
+        int n = s.size();
+        int maxLen = 0;
+        string res;
 
-        int start = 0, end = 0;
-        // For each character (and each gap), try to expand around it
-        for (int i = 0; i < (int)s.size(); i++) {
-            // Even-length palindromes (center between i and i+1)
-            int lenEven = ExpandFromCenter(s, i, i + 1);
-            // Odd-length palindromes (center at i)
-            int lenOdd  = ExpandFromCenter(s, i, i);
-            // Take the longer of the two
-            int len = max(lenEven, lenOdd);
-
-            // If this palindrome is longer than any we've seen, update bounds
-            if (len > end - start + 1) {
-                // For a palindrome of length len centered at i:
-                // new start = i − (len − 1) / 2
-                // new end   = i + len / 2
-                start = i - (len - 1) / 2;
-                end   = i +  len      / 2;
-            }
+        // Check each character as center
+        for (int i = 0; i < n; i++) {
+            // Odd length palindrome
+            expand(i, i, s, maxLen, res); // i as center
+            // Even length palindrome
+            expand(i, i + 1, s, maxLen, res); // i,i+1 as center
         }
 
-        // substr takes (start index, length)
-        return s.substr(start, end - start + 1);
+        return res;
     }
 };

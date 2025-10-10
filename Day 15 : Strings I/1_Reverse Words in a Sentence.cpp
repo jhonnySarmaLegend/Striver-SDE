@@ -3,13 +3,31 @@
 
 
 //MOST OPTIMAL
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n=s.size();
+        reverse(s.begin(),s.end());// 1. Reverse string
+        int start=0,end=0;
 
-
-
-
-
-
-
+        while(end<n){
+            while(start<n && s[start]==' ')start++;//point start to first non space character
+            end=start;
+            while(end<n &&s[end]!=' ')end++;
+            reverse(s.begin()+start,s.begin()+end); // 2.Reverse words
+            start=end;
+        }
+        
+        int read=0,write=0;
+        while(read<n){ //3. make final answer INPLACE
+            while(read<n && s[read]==' ')read++;//removing leading space/spaces
+            while(read<n && s[read]!=' ')s[write++]=s[read++];//copying words inplace
+            while(read<n &&s[read]==' ')read++;//removing forward space/spaces
+            if(read<n)s[write++]=' ';//add 1 space between words;
+        }
+        return s.substr(0,write);
+    }
+};
 
 
 // USING STACK

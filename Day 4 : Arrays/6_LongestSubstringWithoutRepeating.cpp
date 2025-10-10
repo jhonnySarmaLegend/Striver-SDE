@@ -13,7 +13,7 @@ public:
       int n = s.size();
       int len = 0;
       while (right < n) {
-        if (mpp[s[right]] != -1)left = max(mpp[s[right]] + 1, left);//encountered early
+        if (mpp[s[right]] != -1)left = max(mpp[s[right]] + 1, left);//encountered early --> for vector index 
 
         mpp[s[right]] = right;
 
@@ -27,7 +27,26 @@ public:
 
 
 
+// USING MP
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
 
+        int left=0,right=0;
+        int maxi=0;// for edge case "" -->0
+        map<char,int> mp;// (element,index)
+        while(right<s.size()){
+            if(mp.find(s[right])!=mp.end()&& mp[s[right]] >= left)left=mp[s[right]]+1; //update left if req & 2nd condn since right index not necessarily ordered in a map , use vector instead
+           
+            mp[s[right]]=right;// store right index in map
+
+             maxi=max(maxi,right-left+1);//update length
+
+            right++;//move right
+        }
+        return maxi;
+    }
+};
 
 
 

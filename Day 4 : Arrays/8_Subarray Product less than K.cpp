@@ -24,17 +24,17 @@ public:
 class Solution {
 public:
     int numSubarrayProductLessThanK(vector<int>& nums, int k) {
-        if (k <= 1) return 0;
-        int n=nums.size(); int l=0; int r=0;  int product=1; int sum=0;
+        int count=0,product=1;
+        int n=nums.size(); int l=0; int r=0;
         for(int i=0;i<n;i++){
             product*=nums[r];
              while(product>=k && l<=r){
                 product=product/nums[l];
                 l++;
               }
-            sum+=(r-l+1);
+            count+=(r-l+1); // since l=2,r=4   for 1,2,3,4,5,6, --> [3,4,5] -> subarrays --> [3],[3,4],[3,4,5] = r-l+1=4-2+1=3 subarrays
             r++;
              }
-            return sum;
+            return count;
         } 
 };

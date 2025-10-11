@@ -2,7 +2,40 @@
 
 // DRY RUN & LOOK INTO IT
 
+// SLIDING WINDOW  + 2 Pointers
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) {
+         unordered_map<char,int>mp1,mp2;
 
+         for(auto it:s1)mp1[it]++;
+
+         int i=0,j=0;
+         while(j<s2.size()){
+            mp2[s2[j]]++;
+            if(j-i+1 == s1.size()){ // window size==map2 size
+                if(mp1 == mp2)return true;
+                mp2[s2[i]]--;//remove element from left in s2
+                if(mp2[s2[i]]==0)mp2.erase(s2[i]);// if count of s2 element becomes 0 , remove the key
+               i++;//move i 
+            }
+           j++;
+        }
+        
+        return false;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+//ALTERNATE APPROASCH
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {

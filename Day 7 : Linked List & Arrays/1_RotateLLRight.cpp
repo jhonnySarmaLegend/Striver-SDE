@@ -23,6 +23,12 @@ public:
         while(temp->next!=NULL){
             count++;temp=temp->next;
         }
+      /* OR this one --> to find length of LL
+        while(temp!=NULL){
+            size++;
+            temp=temp->next;
+        }
+      */
 
         k=k%count;    // k==n
         if(k==0)return head;

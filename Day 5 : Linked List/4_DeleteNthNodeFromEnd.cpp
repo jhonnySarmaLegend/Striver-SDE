@@ -23,6 +23,32 @@ ListNode* removeNthFromEnd(ListNode* head, int n) {
     }
 
 
+//ALTERNATIVE
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode *temp=head;
+        int size=0;
+        while(temp!=NULL){
+            size++;
+            temp=temp->next;
+        }
+        
+        if(size<n)return head;
+        if(size==n)return head->next;
+
+        //if(size>n)
+        int k=size-n-1;// 1 position before nth node from end
+        temp=head;
+        while(k--){
+          temp=temp->next;
+        }
+        
+        temp->next=temp->next->next;
+        
+        return head;
+    }
+};
 
 
 

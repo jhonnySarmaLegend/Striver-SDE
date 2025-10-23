@@ -59,3 +59,25 @@ void sort(stack<int> &s) {
         sortedInsert(s, x);
     }
 }
+
+/* REVERSE A stack  */
+void insertBottom(stack<int> &st,int ele){
+        if(st.empty()){  //base case
+            st.push(ele);
+            return;
+        }
+        
+        int num=st.top();st.pop();
+        insertBottom(st,ele);
+        st.push(num); 
+    }
+  
+    void Reverse(stack<int> &st) {
+        if(st.empty())return;//base case
+        
+        int num=st.top();st.pop();
+        Reverse(st);
+        insertBottom(st,num);
+    }
+
+

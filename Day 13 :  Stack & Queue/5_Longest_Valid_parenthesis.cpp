@@ -18,9 +18,8 @@ int longestValidParentheses(string s) {
 
     // Iterate over each character in the string by index
     for (int i = 0; i < s.length(); i++) {
-        char ch = s[i];  // Current character
-
-        if (ch == '(') {
+         // Current character
+        if (s[i] == '(') {
             // For an opening parenthesis, push its index onto the stack
             st.push(i);
         } else {

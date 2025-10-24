@@ -1,4 +1,27 @@
-    // root to a given node with value 'x'
+
+//In short
+bool getPath(TreeNode* root, vector<int>& arr, int x) {
+        if (root==NULL) return false;
+         arr.push_back(root->val);
+        if (root->val == x) return true; //value found
+        if (getPath(root->left, arr, x) || getPath(root->right, arr, x)) return true; //left subtree or rightssubtree contains 
+        arr.pop_back();// backtrack
+        return false;
+    }
+
+    vector<int> solve(TreeNode* A, int B) {
+        vector<int> arr;
+        if (A == nullptr) return arr;
+        getPath(A, arr, B);
+        return arr;
+    }
+
+
+
+
+
+//COMMENTED
+// root to a given node with value 'x'
     bool getPath(TreeNode* root, vector<int>& arr, int x) {
         // Base case: If the current
         // node is null, return false

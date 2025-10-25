@@ -1,7 +1,7 @@
 // Question --> https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
 //T.C. = O(N0, S.C.=O(1)
-
-
+  void flatten(TreeNode* root)
+{
  TreeNode* curr = root;
     while (curr) {
         if (curr->left) {
@@ -14,8 +14,8 @@
             curr->left = NULL;
         }
         curr = curr->right;
-
-
+    }
+}
 
 //COMMENTED CODE
 

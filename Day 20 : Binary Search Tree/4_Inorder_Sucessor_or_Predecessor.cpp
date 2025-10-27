@@ -1,12 +1,13 @@
 // inorder of bst = sorted
 // 1,2,3,4,5,6,7,8 
-// Inorder_Predecessor of 5 is 4
+// Inorder_Predecessor of 5 is 4    
 // Inorder_Sucessor of 5 is 6
 
 
 // Desired Code
 class Solution {
 public:
+    //Largest in Left Subtree
     void findSmall(Node* root, int key, Node*& pre) {
         if (root == nullptr) return;
         if (root->data < key) {
@@ -17,6 +18,7 @@ public:
         }
     }
 
+    // Smallest in Right Subtree
     void findLarge(Node* root, int key, Node*& suc) {
         if (root == nullptr) return;
         if (root->data > key) {

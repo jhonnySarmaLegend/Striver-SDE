@@ -39,7 +39,7 @@ public:
 
 
 
-// ITERATIVE
+// ITERATIVE   --> from root --> 1st vale v , such that     p->data  < val < q->data
 //T.C.= O(N) , S.C.=O(1)
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
             while(root) {

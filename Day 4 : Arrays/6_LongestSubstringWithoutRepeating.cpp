@@ -18,6 +18,7 @@ public:
         mpp[s[right]] = right;
 
         len = max(len, right - left + 1);
+        
         right++;
       }
       return len;

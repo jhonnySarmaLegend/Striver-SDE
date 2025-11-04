@@ -9,7 +9,7 @@ public:
         sort(intervals.begin(),intervals.end());
 
         for(int i=0;i<intervals.size();i++){
-                // 1st element pushback & 2nd condition
+                // 1st element pushback & 2nd condition --> starting time of current meeting greater thhan endinng time of previous meeting
                 if(ans.empty()||intervals[i][0]>ans.back()[1]){
                     ans.push_back(intervals[i]);
                 }

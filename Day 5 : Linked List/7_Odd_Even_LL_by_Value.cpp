@@ -21,9 +21,8 @@ struct Node
 //Output: 8->2->4->6->17->15->9
 // even --> odd
 
-class Solution {
-  public:
-    Node* divide(Node* head) {
+Node* divide(Node* head) {
+        // code here
         Node *even=new Node(-1);
         Node *temp1=even;
         Node *odd=new Node(-1);
@@ -33,20 +32,16 @@ class Solution {
         while(temp){
             if(temp->data%2==0){
                 temp1->next=temp;
-                temp=temp->next;
                 temp1=temp1->next;
             }
             else{
                 temp2->next=temp;
-                temp=temp->next;
                 temp2=temp2->next;
             }
+            temp=temp->next;
         }
         
         temp1->next=odd->next;
         temp2->next=NULL;
         return even->next;
-        
-        
     }
-};

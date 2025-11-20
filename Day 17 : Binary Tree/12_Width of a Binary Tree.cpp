@@ -35,23 +35,21 @@ int maxWidth(struct Node* root)
     while (!q.empty()) {
         // Get the size of queue when the level order
         // traversal for one level finishes
-        int count = q.size();
+        int n = q.size();
 
         // Update the maximum node count value
-        result = max(count, result);
+        result = max(n, result);
 
         // Iterate for all the nodes in the queue currently
-        while (count--) {
+       for(int i=0;i<n;i++) {
             // Dequeue an node from queue
             Node* temp = q.front();
             q.pop();
 
             // Enqueue left and right children of
             // dequeued node
-            if (temp->left != NULL)
-                q.push(temp->left);
-            if (temp->right != NULL)
-                q.push(temp->right);
+            if (temp->left != NULL)q.push(temp->left);
+            if (temp->right != NULL)q.push(temp->right);
         }
     }
 

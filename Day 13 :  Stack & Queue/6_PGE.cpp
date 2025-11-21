@@ -1,27 +1,25 @@
 //Previous greater element
-vector<int> findPreviousSmallerElement(const vector<int>& arr) {
+vector<int> previousGreaterElement(vector<int> &arr) {
     int n = arr.size();
-    vector<int> result(n);
-    stack<int> s;
+    vector<int> res(n, -1); // Initialize result with -1
+    stack<int> stk;
 
-    // Iterate from left to right
-    for (int i = 0; i < n; ++i) {
-        // While the stack is not empty and the top element is greater than or equal to the current element
-        while (!s.empty() && s.top() >= arr[i]) {
-            s.pop();
+    // Traverse the array from left to right
+    for (int i = 0; i < n; i++) {
+
+        // Pop elements from the stack that are less than or equal to the current element
+        while (!stk.empty() && arr[i] >= stk.top()) {
+            stk.pop();
         }
 
-        // If the stack becomes empty, there is no smaller element to the left
-        if (s.empty()) {
-            result[i] = -1; // Or some other indicator for no smaller element
-        } else {
-            // The top of the stack is the previous smaller element to the left
-            result[i] = s.top();
+        // If the stack is not empty, the top element is the previous greater element
+        if (!stk.empty()) {
+            res[i] = stk.top();
         }
 
         // Push the current element onto the stack
-        s.push(arr[i]);
+        stk.push(arr[i]);
     }
 
-    return result;
+    return res;
 }

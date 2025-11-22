@@ -23,6 +23,8 @@ public:
 
 /* The below method sorts the stack s
 you are required to complete the below method */
+
+// OPTIMAL USING PQ -->  --> T.C. = O(N) , S.C.=O(N) --> MOST OPTIMAL
 void SortedStack ::sort() {
     // Your code he
     priority_queue<int,vector<int>,greater<int>> pq;//(s.begin(),s.end());--> no begin() end() function for stack
@@ -80,29 +82,3 @@ void insertBottom(stack<int> &st,int ele){
         insertBottom(st,num);
     }
 
-// SORT A STACK USING STACK--> --> T.C. = O(N) , S.C.=O(N) --> MOST OPTIMAL
-void sortStack(stack<int> &s) {
-    stack<int> auxStack; // Auxiliary stack
-
-    while (!s.empty()) {
-        int temp = s.top(); // Pop from the original stack
-        s.pop();
-
-        // Move elements from auxiliary stack back to original stack
-        // until the correct position for `temp` is found
-        while (!auxStack.empty() && auxStack.top() > temp) {
-            s.push(auxStack.top());
-            auxStack.pop();
-        }
-
-        // Push `temp` into the auxiliary stack
-        auxStack.push(temp);
-    }
-
-    // Transfer elements from auxiliary stack back to original stack
-    // to get sorted order (largest at the top)
-    while (!auxStack.empty()) {
-        s.push(auxStack.top());
-        auxStack.pop();
-    }
-}

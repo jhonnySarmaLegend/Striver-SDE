@@ -38,7 +38,7 @@ void SortedStack ::sort() {
     }
 }
 
-//USING RECURSION
+//USING RECURSION --> T.C. = O(N^2) , S.C.=O(N)
 // Refer Love babbar video --> https://www.youtube.com/watch?v=BmZnJehDzyU&t=3175s - 50min around
 void sortedInsert(stack<int> &s, int x) {
     if (s.empty() ||  s.top()<x) {
@@ -60,7 +60,7 @@ void sort(stack<int> &s) {
     }
 }
 
-/* REVERSE A stack  */
+/* REVERSE A stack  */ --> T.C. = O(N^2) , S.C.=O(N)
 void insertBottom(stack<int> &st,int ele){
         if(st.empty()){  //base case
             st.push(ele);
@@ -80,4 +80,29 @@ void insertBottom(stack<int> &st,int ele){
         insertBottom(st,num);
     }
 
+// SORT A STACK USING STACK--> --> T.C. = O(N) , S.C.=O(N) --> MOST OPTIMAL
+void sortStack(stack<int> &s) {
+    stack<int> auxStack; // Auxiliary stack
 
+    while (!s.empty()) {
+        int temp = s.top(); // Pop from the original stack
+        s.pop();
+
+        // Move elements from auxiliary stack back to original stack
+        // until the correct position for `temp` is found
+        while (!auxStack.empty() && auxStack.top() > temp) {
+            s.push(auxStack.top());
+            auxStack.pop();
+        }
+
+        // Push `temp` into the auxiliary stack
+        auxStack.push(temp);
+    }
+
+    // Transfer elements from auxiliary stack back to original stack
+    // to get sorted order (largest at the top)
+    while (!auxStack.empty()) {
+        s.push(auxStack.top());
+        auxStack.pop();
+    }
+}

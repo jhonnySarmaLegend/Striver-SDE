@@ -27,7 +27,7 @@ public:
 
        }
        //slow at middle
-       slow=slow = revList(slow); // STEP 2 --> reverse from middle 
+       slow = revList(slow); // STEP 2 --> reverse from middle 
        fast=head;
        while(slow!=NULL){
         maxi=max(maxi,slow->val+fast->val); // step 3 --> check for max  twin pairs

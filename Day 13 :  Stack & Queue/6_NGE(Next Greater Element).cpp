@@ -57,7 +57,7 @@ vector<int> nextLargerElement(vector<int> &arr) {
 
         // If the stack is not empty, the top element is the next greater element
         if (!stk.empty()) {
-            res[i] = stk.top();
+            res[i] = stk.top(); // eventually the biggest arr[i] present 
         }
 
         // Push the current element onto the stack

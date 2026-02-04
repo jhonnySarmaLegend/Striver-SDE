@@ -36,10 +36,10 @@ void recursionRight(Node* root, int level, vector<int> &res){
         
         // Check if the size of the result vector
         // is equal to the current level
-        if(res.size() == level){
-            // If equal, add the value of the
+           // If equal, add the value of the
             // current node to the result vector
-            res.push_back(root->data);
+   
+          if(res.size() == level) res.push_back(root->data);          
             
             // Recursively call the function for the
             // right child with an increased level
